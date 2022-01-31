@@ -1,0 +1,103 @@
+body{
+    background: url("pergamino.jpg") no-repeat center top;
+    background-size: cover;
+}
+
+p{
+    color: black; 
+    font-size: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 600ch;
+    
+  }
+  p:nth-child(1){
+    animation: type1 4s steps(64, end);
+  }
+  p:nth-child(2){
+    animation: type2 10s steps(55, end);
+  }
+  p:nth-child(3){
+    animation: type3 15s steps(66, end);
+  }
+  p:nth-child(4){
+    animation: type4 20s steps(74, end);
+  }
+  p:nth-child(5){
+    animation: type5 25s steps(73, end);;
+  }
+  p:nth-child(6){
+    animation: type6 30s steps(79, end);;
+  }
+  p:nth-child(7){
+    animation: type7 35s steps(49, end);
+  }
+  p:nth-child(8){
+    animation: type8 40s steps(69, end);
+  }
+  p:nth-child(9){
+    animation: type9 45s steps(19, end);
+  }
+  
+  span{
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes type1{ 
+    from { width: 0; } 
+    50%{width: 0;}
+    100%{ width: 100; }
+  } 
+  
+  @keyframes type2{
+    0%{width: 0;}
+    50%{width: 0;}
+    100%{ width: 100; } 
+  } 
+  @keyframes type3{
+    0%{width: 0;}
+    50%{width: 0;}
+    100%{ width: 100; } 
+  }
+  @keyframes type4{
+    0%{width: 0;}
+    50%{width: 0;}
+    100%{ width: 100; } 
+  }
+  @keyframes type5{
+    0%{width: 0;}
+    50%{width: 0;}
+    100%{ width: 100; } 
+  }
+  @keyframes type6{
+    0%{width: 0;}
+    50%{width: 0;}
+    100%{ width: 100; } 
+  }
+  @keyframes type7{
+    0%{width: 0;}
+    50%{width: 0;}
+    100%{ width: 100; } 
+  }
+  @keyframes type8{
+    0%{width: 0;}
+    50%{width: 0;}
+    100%{ width: 100; } 
+  }
+  @keyframes type9{
+    0%{width: 0;}
+    50%{width: 0;}
+    100%{ width: 100; } 
+  }
+  @keyframes blink{
+    to{opacity: .0;}
+  }
+  
+  .texto{
+    margin-left: 230px;
+    margin-top: -15px;
+
+  }
+  ::-webkit-scrollbar {
+    display: none;
+}

@@ -1,0 +1,159 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    perspective: 800px;
+    transform-style: preserve-3d;
+    background-color: #5C6061;
+    /* background: url("habitacion.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
+
+.prota{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    text-align:center;
+}
+
+.malo{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    text-align:center;
+}
+
+.div_prota{
+    z-index: 300;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    margin-left: 300px;
+    margin-top: 318px;
+    background-image: url("enemigo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    transform: translateZ(-350px);
+}
+
+.div_malo{
+    z-index: 301;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    margin-left: 300px;
+    margin-top: 318px;
+    background-image: url("jaime.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    transform: translateZ(-350px);
+}
+
+.izquierda{
+    
+    position: absolute;
+    width: 700px;
+    height: 465px;
+    top: calc(50% - 400px);
+    /* left: calc(50% - 400px); */
+    transform: rotateY(90deg);
+    margin-top: 23.2%;
+    margin-left: -15px;
+}
+.derecha{
+    
+    position: absolute;
+    width: 700px;
+    height: 465px;
+    top: calc(50% - 400px);
+    /* left: calc(50% - 400px); */
+    transform: rotateY(-90deg);
+    margin-top: 23.2%;
+    margin-left: 56%;
+}
+.fondo{
+    transform: translateZ(-460px);
+    position: absolute;
+    width: 975px;
+    height: 500px;
+    top: calc(50% - 400px);
+    left: calc(50% - 400px);
+    margin-top: 23.5%; 
+    margin-left: -88px;
+}
+.abajo{
+    
+    position: absolute;
+    width: 900px;
+    height: 730px;
+    top: calc(50% - 400px);
+    transform: rotateX(90deg) translateZ(-30px);
+    margin-top: 28%;
+    margin-left: 21.12%;
+}
+.suelo{
+    
+    position: absolute;
+    width: 900px;
+    height: 730px;
+    top: calc(50% - 400px);
+    transform: rotateX(90deg) translateZ(-30px);
+    margin-top: 28%;
+    margin-left: 21.12%;
+}
+
+.salida{
+    background-image: url("puerta-abierta.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+/* tr:nth-child(odd) td:nth-child(even) {
+    background-color: rgb(255, 228, 196, 1); 
+}
+tr:nth-child(odd) td:nth-child(odd){
+    background-color:rgb(233, 150, 122, 1);
+}
+tr:nth-child(even) td:nth-child(odd) {
+    background-color: rgb(255, 228, 196, 1); 
+}
+tr:nth-child(even) td:nth-child(even){
+    background-color:rgb(233, 150, 122, 1);
+} */
+
+td{
+    width: 40px;
+    height: 5px;
+    text-align: center;
+    font-size: 3rem;
+}
+
+/* tr:last-child td:last-child{
+    background-image: url(enemigo.png);
+} */
+/* img{
+    width: 300px;
+    height: 300px;
+    transform: rotateX(81deg);
+} */
+#conload{
+    position: fixed;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100vh;
+    z-index: 10;
+    line-height: 100vh;
+    background-color:#333;
+    text-align:center;
+    color:#fff;
+    font-size: 40px;
+  }
+
+
