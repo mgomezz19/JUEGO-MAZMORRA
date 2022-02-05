@@ -33,7 +33,7 @@ body{
     height: 150px;
     margin-left: 300px;
     margin-top: 318px;
-    background-image: url("enemigo.png");
+    background-image: url("tanque.gif");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -47,7 +47,7 @@ body{
     height: 150px;
     margin-left: 300px;
     margin-top: 318px;
-    background-image: url("jaime.png");
+    background-image: url("guerrero.gif");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
