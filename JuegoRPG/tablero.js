@@ -435,6 +435,17 @@ function load(){
    
   }
   
+  function pausar() {
+    var audio = document.querySelector('audio');
+    audio.pause();
+    audio.currentTime=0;
+}
+
+function play() {
+  var audio = document.querySelector('audio');
+  audio.play();
+  audio.currentTime=0;
+}
   
 
 // function mover(direccion) {

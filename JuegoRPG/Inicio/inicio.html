@@ -8,13 +8,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet"></head>
     <link rel="stylesheet" href="inicio.css">
+    <script src="../tablero.js"></script>
 
 <body>
+    <button onclick="pausar()">Pause Audio</button>
+    <button onclick="play()">Play Audio</button>
+
     <audio autoplay loop><!-- audio en bucle --> 
         <source src="Sonido_Ambiente_inicio.mp3" type="audio/ogg">
         <source src="Sonido_Ambiente_inicio.mp3" type="audio/mpeg">
     </audio>
-    <h1>ESCAPE THE DUNGEON</h1>   
+    <h1>El robo de los examenes</h1>   
     <a href="../tablero.html"><input type="button" value="JUGAR" id="boton"></a>
 </body>
 </html>
