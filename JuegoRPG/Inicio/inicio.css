@@ -26,8 +26,7 @@ body{
     text-shadow: 5px 3px 4px #000000;
     border: solid #000000 1px;
     background: -webkit-gradient(linear, 0 0, 0 100%, from(#5e5e5e), to(#000000));
-    margin-top: 7.8em;
-    margin-bottom: 1.8em;
+    margin-top: 7em;
     margin-right: 0.8em;
 }
 
@@ -41,7 +40,6 @@ h1{
 
 button{
     margin-left: 35%;
-    transform: translateZ(300px);
     background-color: #5C6061;
     border: 2px solid black;
     border-radius: 15px;

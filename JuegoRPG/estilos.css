@@ -68,8 +68,9 @@ body{
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    transform: translateZ(-300px);
+    transform: translateZ(-300px)rotateY(180deg);
 }
+
 .div_malo{
     z-index: 301;
     position: absolute;
@@ -81,7 +82,7 @@ body{
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    transform: translateZ(-300px);
+    transform: translateZ(-300px)rotateY(-180deg);
 }
 
 .div_examen{
@@ -109,12 +110,6 @@ body{
     background-size: 60%;
     background-position: center;
     transform: translateZ(-300px);
-}
-
-.div_ganar{
-    background-color: grey;
-    z-index: 305;
-    opacity: 0;
 }
 
 .puerta{
@@ -269,8 +264,8 @@ img{
     height: 100vh;
 }
 .perder{
-    color: white;
-    font-size: 30px;
+    color: rgb(177, 14, 14);
+    font-size: 80px;
     text-align: center;
     opacity: 0;
     z-index: 500;

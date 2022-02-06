@@ -70,26 +70,27 @@ var posx_yo=0;
         }
         
     }
-    for (let i = 0; i < 7; i++) {
-        mover_div_obstaculo_x = 0;
-        mover_div_obstaculo_y = -280;
-        do {
-            obstaculo_x = parseInt(Math.random() * 8);
-            obstaculo_y = parseInt(Math.random() * 8);      
-        } while (tabla.rows[obstaculo_x].cells[obstaculo_y].textContent!=".");
-        var div_obstaculo = document.createElement("div");
-        div_obstaculo.className="div_obstaculo";
-        document.body.appendChild(div_obstaculo);
-        tabla.rows[obstaculo_x].cells[obstaculo_y].className="obstaculo";
-        tabla.rows[obstaculo_x].cells[obstaculo_y].textContent="O";
-        tabla.rows[obstaculo_x].cells[obstaculo_y].style.color="transparent";
+    //OBSTACULOS SE ATRAVIESAN
+    // for (let i = 0; i < 7; i++) {
+    //     mover_div_obstaculo_x = 0;
+    //     mover_div_obstaculo_y = -280;
+    //     do {
+    //         obstaculo_x = parseInt(Math.random() * 8);
+    //         obstaculo_y = parseInt(Math.random() * 8);      
+    //     } while (tabla.rows[obstaculo_x].cells[obstaculo_y].textContent!=".");
+    //     var div_obstaculo = document.createElement("div");
+    //     div_obstaculo.className="div_obstaculo";
+    //     document.body.appendChild(div_obstaculo);
+    //     tabla.rows[obstaculo_x].cells[obstaculo_y].className="obstaculo";
+    //     tabla.rows[obstaculo_x].cells[obstaculo_y].textContent="O";
+    //     tabla.rows[obstaculo_x].cells[obstaculo_y].style.color="transparent";
     
-        mover_div_obstaculo_x +=105*obstaculo_y;
-        div_obstaculo.style.left=mover_div_obstaculo_x+"px";
+    //     mover_div_obstaculo_x +=105*obstaculo_y;
+    //     div_obstaculo.style.left=mover_div_obstaculo_x+"px";
         
-        mover_div_obstaculo_y +=90*obstaculo_x;
-        div_obstaculo.style.transform="translateZ("+mover_div_obstaculo_y+"px)";
-    }
+    //     mover_div_obstaculo_y +=90*obstaculo_x;
+    //     div_obstaculo.style.transform="translateZ("+mover_div_obstaculo_y+"px)";
+    // }
 }
 
 function moverdiv(direccion) {
@@ -103,7 +104,7 @@ function moverdiv(direccion) {
 
         case "arr":
             mover_div_y -=90;
-            div_prota.style.transform="translateZ("+mover_div_y+"px)";
+            div_prota.style.transform="translateZ("+mover_div_y+"px)rotateY(180deg)";
             break;
 
         case "der":
@@ -168,6 +169,7 @@ window.addEventListener("keyup", event => {
                             var div_examen = document.querySelector(".div_examen");
                             document.body.removeChild(div_examen);
                             tabla.rows[7].cells[7].textContent="S";
+                            abrir();
                         }  
                         
                         //MOVIMIENTO DEL USUARIO
@@ -249,6 +251,7 @@ window.addEventListener("keyup", event => {
                             var div_examen = document.querySelector(".div_examen");
                             document.body.removeChild(div_examen);
                             tabla.rows[7].cells[7].textContent="S";
+                            abrir();
                         }  
 
                         //MOVIMIENTO DEL USUARIO
@@ -330,6 +333,7 @@ window.addEventListener("keyup", event => {
                             var div_examen = document.querySelector(".div_examen");
                             document.body.removeChild(div_examen);
                             tabla.rows[7].cells[7].textContent="S";
+                            abrir();
                         } 
 
                         if (tabla.rows[i].cells[j+1].textContent=="S") {//SI A LA DERECHA DEL USUARIO ESTA LA SALIDA, GANA EL JUEGO
@@ -415,6 +419,7 @@ window.addEventListener("keyup", event => {
                             var div_examen = document.querySelector(".div_examen");
                             document.body.removeChild(div_examen);
                             tabla.rows[7].cells[7].textContent="S";
+                            abrir();
                         } 
 
                         if (tabla.rows[i+1].cells[j].textContent=="S") {//SI ABAJO DEL USUARIO ESTA LA SALIDA, GANA EL JUEGO
@@ -488,7 +493,11 @@ window.addEventListener("keyup", event => {
     }
 
 });
-
+function abrir() {
+    var puerta = document.querySelector(".puerta");
+    puerta.src="puerta_abiertaa.png";
+    puerta.style.left+=-10+"px";
+}
 function elegir_personaje(clase) {
     console.log("ola");
     var personaje = document.querySelector("#prota");
@@ -541,7 +550,7 @@ function ganar() {
     var abajo = document.querySelector(".abajo"); 
     var prota = document.querySelector("#prota"); 
     var malo = document.querySelector(".div_malo"); 
-    var obstaculo = document.querySelectorAll(".div_obstaculo"); 
+    // var obstaculo = document.querySelectorAll(".div_obstaculo"); 
     var puerta = document.querySelector('.puerta');
     div_ganar.style.opacity=1;
     izquierda.style.opacity=0;
@@ -550,9 +559,9 @@ function ganar() {
     prota.style.opacity=0;
     malo.style.opacity=0;
     puerta.style.opacity=0;
-    for (let i = 0; i < obstaculo.length; i++) {
-        obstaculo[i].style.opacity=0;
-    }
+    // for (let i = 0; i < obstaculo.length; i++) {
+    //     obstaculo[i].style.opacity=0;
+    // }
 }
 function perder() {
     var audio_perder = document.querySelector(".audio_perder");
@@ -566,7 +575,7 @@ function perder() {
     var prota = document.querySelector("#prota"); 
     var malo = document.querySelector(".div_malo"); 
     var moneda = document.querySelector(".div_examen"); 
-    var obstaculo = document.querySelectorAll(".div_obstaculo"); 
+    // var obstaculo = document.querySelectorAll(".div_obstaculo"); 
     var puerta = document.querySelector('.puerta');
     div_perder.style.opacity=1;
     izquierda.style.opacity=0;
@@ -574,11 +583,12 @@ function perder() {
     abajo.style.opacity=0;
     prota.style.opacity=0;
     malo.style.opacity=0;
-    moneda.style.opacity=0;
     puerta.style.opacity=0;
-    for (let i = 0; i < obstaculo.length; i++) {
-        obstaculo[i].style.opacity=0;
-    }
+    moneda.style.opacity=0;
+   
+    // for (let i = 0; i < obstaculo.length; i++) {
+    //     obstaculo[i].style.opacity=0;
+    // }
 }
 function sonido() {
     var audio = document.querySelector('.sonic_fondo');

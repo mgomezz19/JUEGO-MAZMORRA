@@ -7,7 +7,6 @@
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet"></head>
     <link rel="stylesheet" href="estilos.css">
-    <script src="helper.js"></script>
     <script src="tablero.js"></script>
 </head>
 <body>
@@ -107,10 +106,12 @@
 <audio class="sonic_fondo" loop src="sonic.mp3"></audio>
 <div class="ganar">
     <br><br><br> 
+    <a style="text-decoration: none; color: #51ff00;" href="tablero.html">
     <h2>¡Enhorabuena, joven guerrero!</h2> 
     <h2>¡Conseguiste escapar!</h2>
+    </a>
 </div>
-<div class="perder"><br><br><br> Has sido derrotado</div>
+<div class="perder"><br><br><br> <a style="text-decoration: none; color: rgb(177, 14, 14);" href="tablero.html">Has sido derrotado</a></div>
 <div class="elegir_personajes">
     <h1>Elige tu personaje</h1>
     <img class="img_1" src="tanque.gif" onclick="elegir_personaje(1)">
