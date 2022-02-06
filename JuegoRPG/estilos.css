@@ -57,14 +57,14 @@ body{
     transform: translateZ(-300px);
 }
 
-.div_mago{
+.div_luchador{
     z-index: 301;
     position: absolute;
     width: 150px;
     height: 150px;
     margin-left: 300px;
     margin-top: 280px;
-    background-image: url("mago.gif");
+    background-image: url("luchador.gif");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -77,7 +77,7 @@ body{
     height: 150px;
     margin-left: 300px;
     margin-top: 280px;
-    background-image: url("asesino.gif");
+    background-image: url("malo.gif");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -222,7 +222,7 @@ h1{
     font-family: 'Shadows Into Light', cursive;
     font-size: 90px;
     height: 100px;
-    color:#00cbff;
+    color:#ff7b00;
 }
 
 h2{

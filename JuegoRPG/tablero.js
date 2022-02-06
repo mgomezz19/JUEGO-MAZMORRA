@@ -520,7 +520,7 @@ function elegir_personaje(clase) {
             break;
 
         case 3:
-            personaje.className="div_mago";
+            personaje.className="div_luchador";
             break;
     
         default:
