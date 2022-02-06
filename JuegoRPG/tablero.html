@@ -11,11 +11,11 @@
 </head>
 <body>
     <!-- <div id="conload">Cargando...</div> -->
-    <img class="izquierda" src="pared.jpg"  >
-    <img class="fondo" src="pared.jpg"  >
-    <img class="derecha" src="pared.jpg"  >
+    <img class="izquierda" src="pared.jpg"  style="opacity: 0;">
+    <img class="fondo" src="pared.jpg" >
+    <img class="derecha" src="pared.jpg" style="opacity: 0;">
   
-<table class="abajo" border="1" cellspacing="0" cellpadding="0">
+<table class="abajo" border="1" cellspacing="0" cellpadding="0" style="opacity: 0;">
     <tr>
         <td></td>
         <td></td>
@@ -97,12 +97,18 @@
         <td></td>
     </tr>
 </table>
-<div class="div_prota"></div>
-<div class="div_malo"></div>
-<div class="div_examen"></div>
-<button class="escuchando" onclick="sonido()"></button>
-<!-- <audio autoplay loop src="sonic.mp3"></audio> -->
+
+<div id="prota" style="opacity: 0;"></div>
+<div class="div_malo" style="opacity: 0;"></div>
+<div class="div_examen" style="opacity: 0;"></div>
+<button class="escuchando" onclick="sonido()" style="opacity: 0;"></button>
+<audio class="sonic_fondo" autoplay loop src="sonic.mp3"></audio>
 <div class="ganar"><br><br><br> ¡Ehnorabuena, joven guerrero!</div>
+<div class="elegir_personajes">
+    <img class="img_1" src="tanque.gif" onclick="elegir_personaje(1)">
+    <img src="asesino.gif" onclick="elegir_personaje(2)">
+    <img class="img_3" src="mago.gif" onclick="elegir_personaje(3)">
+</div>
 <audio class="audio_victoria" src="sonic_victoria.mp3"></audio>
     <!-- <input type="button" value="Izq" onclick="mover(this.value)">
     <input type="button" value="Arr" onclick="mover(this.value)">

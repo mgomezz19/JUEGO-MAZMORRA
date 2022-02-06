@@ -10,7 +10,6 @@
     var mover_div_examen_y = -350;
     var cargado = false;
 window.onload = function () {
-    // load();
     var celda = document.querySelectorAll("td");
     var tabla = document.querySelector("table");
     var numprof_x;
@@ -67,7 +66,7 @@ window.onload = function () {
     }
 }
 function moverdiv(direccion) {
-    var div_prota = document.querySelector(".div_prota");
+    var div_prota = document.querySelector("#prota");
 
     switch (direccion) {
         case "izq":
@@ -439,14 +438,51 @@ window.addEventListener("keyup", event => {
 
 });
 
+function elegir_personaje(clase) {
+    console.log("ola");
+    var personaje = document.querySelector("#prota");
+    var div = document.querySelector(".elegir_personajes");
+    div.style.opacity=0;
+    var izquierda = document.querySelector(".izquierda"); 
+    var derecha = document.querySelector(".derecha"); 
+    var abajo = document.querySelector(".abajo"); 
+    var prota = document.querySelector("#prota"); 
+    var malo = document.querySelector(".div_malo"); 
+    var moneda = document.querySelector(".div_examen"); 
+    izquierda.style.opacity=1;
+    derecha.style.opacity=1;
+    abajo.style.opacity=1;
+    prota.style.opacity=1;
+    malo.style.opacity=1;
+    moneda.style.opacity=1;
+    switch (clase) {
+        case 1:
+            personaje.className="div_tanque";
+            break;
+
+        case 2:
+            personaje.className="div_asesino";
+            break;
+
+        case 3:
+            personaje.className="div_mago";
+            break;
+    
+        default:
+            break;
+    }
+}
+
 function ganar() {
     var audio_victoria = document.querySelector(".audio_victoria");
     audio_victoria.play();
+    var audio = document.querySelector('.sonic_fondo');
+    audio.pause();
     var div_ganar = document.querySelector(".ganar");
     var izquierda = document.querySelector(".izquierda"); 
     var derecha = document.querySelector(".derecha"); 
     var abajo = document.querySelector(".abajo"); 
-    var prota = document.querySelector(".div_prota"); 
+    var prota = document.querySelector("#prota"); 
     var malo = document.querySelector(".div_malo"); 
     var moneda = document.querySelector(".div_examen"); 
     div_ganar.style.opacity=1;
@@ -456,7 +492,6 @@ function ganar() {
     prota.style.opacity=0;
     malo.style.opacity=0;
     moneda.style.opacity=0;
-
 }
 // function load(){
 //     conload.style.display = 'inline-block';
@@ -488,7 +523,7 @@ function ganar() {
 //   }
 
 function sonido() {
-    var audio = document.querySelector('audio');
+    var audio = document.querySelector('.sonic_fondo');
     var boton = document.querySelector('button');
 
         if(!audio.paused)   { 
