@@ -103,12 +103,13 @@
 <div class="div_malo" style="opacity: 0;"></div>
 <div class="div_examen" style="opacity: 0;"></div>
 <button class="escuchando" onclick="sonido()" style="opacity: 0;"></button>
-<audio class="sonic_fondo" autoplay loop src="sonic.mp3"></audio>
+<audio class="sonic_fondo" loop src="sonic.mp3"></audio>
 <div class="ganar">
     <br><br><br> 
     <h2>¡Enhorabuena, joven guerrero!</h2> 
     <h2>¡Conseguiste escapar!</h2>
 </div>
+<div class="perder"><br><br><br> Has sido derrotado</div>
 <div class="elegir_personajes">
     <h1>Elige tu personaje</h1>
     <img class="img_1" src="tanque.gif" onclick="elegir_personaje(1)">
@@ -116,6 +117,7 @@
     <img class="img_3" src="mago.gif" onclick="elegir_personaje(3)">
 </div>
 <audio class="audio_victoria" src="sonic_victoria.mp3"></audio>
+<audio class="audio_perder" src="perder.mp3"></audio>
     <!-- <input type="button" value="Izq" onclick="mover(this.value)">
     <input type="button" value="Arr" onclick="mover(this.value)">
     <input type="button" value="Der" onclick="mover(this.value)">

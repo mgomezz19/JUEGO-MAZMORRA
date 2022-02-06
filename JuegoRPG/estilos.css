@@ -97,6 +97,19 @@ body{
     background-position: center;
     transform: translateZ(-350px);
 }
+.div_obstaculo{
+    z-index: 301;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    margin-left: 320px;
+    margin-top: 320px;
+    background-image: url("hormigas.gif");
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center;
+    transform: translateZ(-300px);
+}
 
 .div_ganar{
     background-color: grey;
@@ -248,7 +261,17 @@ img{
     width: 100vw;
     height: 100vh;
 }
-
+.perder{
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    opacity: 0;
+    z-index: 500;
+    background-color: #333;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
 #conload{
     position: fixed;
     left:0px;

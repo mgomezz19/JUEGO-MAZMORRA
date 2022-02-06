@@ -1,4 +1,4 @@
-    var posx_yo=0;
+var posx_yo=0;
     var posy_yo=0;
     var posx_profe=0;
     var posy_profe=0;
@@ -8,9 +8,13 @@
     var mover_div_malo_y = -300;
     var mover_div_examen_x = 0;
     var mover_div_examen_y = -350;
+    var mover_div_obstaculo_x = 0;
+    var mover_div_obstaculo_y = -300;
+    var obstaculo_x=0;
+    var obstaculo_y=0;
     var cargado = false;
-window.onload = function () {
-    var celda = document.querySelectorAll("td");
+    function crear() {
+        var celda = document.querySelectorAll("td");
     var tabla = document.querySelector("table");
     var numprof_x;
     var numprof_y;
@@ -20,9 +24,11 @@ window.onload = function () {
     var div_examen = document.querySelector(".div_examen");
 
     celda[0].className="prota";
-    celda[63].className="salida";
     celda[0].textContent="X";
     celda[0].style.color="transparent"; 
+    celda[63].className="salida";
+    celda[63].textContent="N";
+    celda[63].style.color="transparent";
 
     do {
         numprof_x = parseInt(Math.random() * 8);
@@ -64,7 +70,28 @@ window.onload = function () {
         }
         
     }
+    for (let i = 0; i < 7; i++) {
+        mover_div_obstaculo_x = 0;
+        mover_div_obstaculo_y = -280;
+        do {
+            obstaculo_x = parseInt(Math.random() * 8);
+            obstaculo_y = parseInt(Math.random() * 8);      
+        } while (tabla.rows[obstaculo_x].cells[obstaculo_y].textContent!=".");
+        var div_obstaculo = document.createElement("div");
+        div_obstaculo.className="div_obstaculo";
+        document.body.appendChild(div_obstaculo);
+        tabla.rows[obstaculo_x].cells[obstaculo_y].className="obstaculo";
+        tabla.rows[obstaculo_x].cells[obstaculo_y].textContent="O";
+        tabla.rows[obstaculo_x].cells[obstaculo_y].style.color="transparent";
+    
+        mover_div_obstaculo_x +=105*obstaculo_y;
+        div_obstaculo.style.left=mover_div_obstaculo_x+"px";
+        
+        mover_div_obstaculo_y +=90*obstaculo_x;
+        div_obstaculo.style.transform="translateZ("+mover_div_obstaculo_y+"px)";
+    }
 }
+
 function moverdiv(direccion) {
     var div_prota = document.querySelector("#prota");
 
@@ -123,6 +150,7 @@ function moverdiv(direccion) {
             break;
     }
   }
+ 
 window.addEventListener("keyup", event => {
     var tabla = document.querySelector("table");
     var x_final=0;
@@ -175,14 +203,17 @@ window.addEventListener("keyup", event => {
                 if (y_final<0) {
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe+1].cells[posx_profe].textContent="P";
+                    if(tabla.rows[posy_profe+1].cells[posx_profe]==tabla.rows[posy_yo].cells[posx_yo-1]){
+                        perder();
+                    }
                     moverdivmalo("aba");
-                }
-                else if(y_final==0&&x_final==0){
-                    console.log("te he ecomio primo");
                 }
                 else{
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe-1].cells[posx_profe].textContent="P";
+                    if(tabla.rows[posy_profe-1].cells[posx_profe]==tabla.rows[posy_yo].cells[posx_yo-1]){
+                        perder();
+                    }
                     moverdivmalo("arr");
                 }
             }
@@ -190,14 +221,17 @@ window.addEventListener("keyup", event => {
                 if (x_final<0) {
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe].cells[posx_profe+1].textContent="P";
+                    if(tabla.rows[posy_profe].cells[posx_profe+1]==tabla.rows[posy_yo].cells[posx_yo-1]){
+                        perder();
+                    }
                     moverdivmalo("der");
-                }
-                else if(y_final==0&&x_final==0){
-                    console.log("te he ecomio primo");
                 }
                 else{
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe].cells[posx_profe-1].textContent="P";
+                    if(tabla.rows[posy_profe].cells[posx_profe-1]==tabla.rows[posy_yo].cells[posx_yo-1]){
+                        perder();
+                    }
                     moverdivmalo("izq");
                 }
             }
@@ -250,14 +284,17 @@ window.addEventListener("keyup", event => {
                 if (y_final<0) {
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe+1].cells[posx_profe].textContent="P";
+                    if(tabla.rows[posy_profe+1].cells[posx_profe]==tabla.rows[posy_yo-1].cells[posx_yo]){
+                        perder();
+                    }
                     moverdivmalo("aba");
-                }
-                else if(y_final==0&&x_final==0){
-                    console.log("te he comio primo");
                 }
                 else{
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe-1].cells[posx_profe].textContent="P";
+                    if(tabla.rows[posy_profe-1].cells[posx_profe]==tabla.rows[posy_yo-1].cells[posx_yo]){
+                        perder();
+                    }
                     moverdivmalo("arr");
                 }
             }
@@ -265,15 +302,17 @@ window.addEventListener("keyup", event => {
                 if (x_final<0) {
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe].cells[posx_profe+1].textContent="P";
-                    tabla.rows[posy_profe].cells[posx_profe+1].className="malo";
+                    if(tabla.rows[posy_profe].cells[posx_profe+1]==tabla.rows[posy_yo-1].cells[posx_yo]){
+                        perder();
+                    }
                     moverdivmalo("der");
-                }
-                else if(y_final==0&&x_final==0){
-                    console.log("te he ecomio primo");
                 }
                 else{
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe].cells[posx_profe-1].textContent="P";
+                    if(tabla.rows[posy_profe].cells[posx_profe-1]==tabla.rows[posy_yo-1].cells[posx_yo]){
+                        perder();
+                    }
                     moverdivmalo("izq");
                 }
             }
@@ -330,14 +369,17 @@ window.addEventListener("keyup", event => {
                 if (y_final<0) {
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe+1].cells[posx_profe].textContent="P";
+                    if(tabla.rows[posy_profe+1].cells[posx_profe]==tabla.rows[posy_yo].cells[posx_yo+1]){
+                        perder();
+                    }
                     moverdivmalo("aba");
-                }
-                else if(y_final==0&&x_final==0){
-                    console.log("te he ecomio primo");
                 }
                 else{
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe-1].cells[posx_profe].textContent="P";
+                    if(tabla.rows[posy_profe-1].cells[posx_profe]==tabla.rows[posy_yo].cells[posx_yo+1]){
+                        perder();
+                    }
                     moverdivmalo("arr");
                 }
             }
@@ -345,14 +387,17 @@ window.addEventListener("keyup", event => {
                 if (x_final<0) {
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe].cells[posx_profe+1].textContent="P";
+                    if(tabla.rows[posy_profe].cells[posx_profe+1]==tabla.rows[posy_yo].cells[posx_yo+1]){
+                        perder();
+                    }
                     moverdivmalo("der");
-                }
-                else if(y_final==0&&x_final==0){
-                    console.log("te he ecomio primo");
                 }
                 else{
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe].cells[posx_profe-1].textContent="P";
+                    if(tabla.rows[posy_profe].cells[posx_profe-1]==tabla.rows[posy_yo].cells[posx_yo+1]){
+                        perder();
+                    }
                     moverdivmalo("izq");
                 }
             }
@@ -404,14 +449,17 @@ window.addEventListener("keyup", event => {
                 if (y_final<0) {
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe+1].cells[posx_profe].textContent="P";
+                    if(tabla.rows[posy_profe+1].cells[posx_profe]==tabla.rows[posy_yo+1].cells[posx_yo]){
+                        perder();
+                    }
                     moverdivmalo("aba");
-                }
-                else if(y_final==0&&x_final==0){
-                    console.log("te he ecomio primo");
                 }
                 else{
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe-1].cells[posx_profe].textContent="P";
+                    if(tabla.rows[posy_profe-1].cells[posx_profe]==tabla.rows[posy_yo+1].cells[posx_yo]){
+                        perder();
+                    }
                     moverdivmalo("arr");
                 }
             }
@@ -419,14 +467,17 @@ window.addEventListener("keyup", event => {
                 if (x_final<0) {
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe].cells[posx_profe+1].textContent="P";
+                    if(tabla.rows[posy_profe].cells[posx_profe+1]==tabla.rows[posy_yo+1].cells[posx_yo]){
+                        perder();
+                    }
                     moverdivmalo("der");
-                }
-                else if(y_final==0&&x_final==0){
-                    console.log("te he ecomio primo");
                 }
                 else{
                     tabla.rows[posy_profe].cells[posx_profe].textContent=".";
                     tabla.rows[posy_profe].cells[posx_profe-1].textContent="P";
+                    if(tabla.rows[posy_profe].cells[posx_profe-1]==tabla.rows[posy_yo+1].cells[posx_yo]){
+                        perder();
+                    }
                     moverdivmalo("izq");
                 }
             }
@@ -442,19 +493,21 @@ function elegir_personaje(clase) {
     console.log("ola");
     var personaje = document.querySelector("#prota");
     var div = document.querySelector(".elegir_personajes");
-    div.style.opacity=0;
+    document.body.removeChild(div);
     var izquierda = document.querySelector(".izquierda"); 
     var derecha = document.querySelector(".derecha"); 
     var abajo = document.querySelector(".abajo"); 
     var prota = document.querySelector("#prota"); 
     var malo = document.querySelector(".div_malo"); 
     var moneda = document.querySelector(".div_examen"); 
+    var boton = document.querySelector('button');
     izquierda.style.opacity=1;
     derecha.style.opacity=1;
     abajo.style.opacity=1;
     prota.style.opacity=1;
     malo.style.opacity=1;
-    moneda.style.opacity=1;
+    moneda.style.opacity=1; 
+    boton.style.opacity=1;
     switch (clase) {
         case 1:
             personaje.className="div_tanque";
@@ -471,6 +524,8 @@ function elegir_personaje(clase) {
         default:
             break;
     }
+    crear();
+    sonido();
 }
 
 function ganar() {
@@ -484,44 +539,41 @@ function ganar() {
     var abajo = document.querySelector(".abajo"); 
     var prota = document.querySelector("#prota"); 
     var malo = document.querySelector(".div_malo"); 
-    var moneda = document.querySelector(".div_examen"); 
+    var obstaculo = document.querySelectorAll(".div_obstaculo"); 
     div_ganar.style.opacity=1;
     izquierda.style.opacity=0;
     derecha.style.opacity=0;
     abajo.style.opacity=0;
     prota.style.opacity=0;
     malo.style.opacity=0;
-    moneda.style.opacity=0;
+    for (let i = 0; i < obstaculo.length; i++) {
+        obstaculo[i].style.opacity=0;
+    }
 }
-// function load(){
-//     conload.style.display = 'inline-block';
-//     animacion(conload,[{opacity:1, opacity:0}], { duration:3500, fill:'forwards' }, function(){   
-//       conload.style.display = 'none'; 
-      
-//     }) 
-//     setInterval(() => {
-//         var tablero = document.querySelector("table");
-//         var paredes = document.querySelectorAll("img");
-    
-//         for (let i = 0; i < paredes.length; i++) {
-//             animacion(paredes[i],[{opacity:0, opacity:1}], { duration:3000, fill:'forwards' }, function(){   
-                
-                
-//             }); 
-            
-//         }
-            
-//             animacion(tablero,[{opacity:0, opacity:1}], { duration:3000, fill:'forwards' }, function(){   
-            
-            
-//             });
-            
-        
-        
-//     }, 3000);
-
-//   }
-
+function perder() {
+    var audio_perder = document.querySelector(".audio_perder");
+    audio_perder.play();
+    var audio = document.querySelector('.sonic_fondo');
+    audio.pause();
+    var div_perder = document.querySelector(".perder");
+    var izquierda = document.querySelector(".izquierda"); 
+    var derecha = document.querySelector(".derecha"); 
+    var abajo = document.querySelector(".abajo"); 
+    var prota = document.querySelector("#prota"); 
+    var malo = document.querySelector(".div_malo"); 
+    var moneda = document.querySelector(".div_examen"); 
+    var obstaculo = document.querySelectorAll(".div_obstaculo"); 
+    div_perder.style.opacity=1;
+    izquierda.style.opacity=0;
+    derecha.style.opacity=0;
+    abajo.style.opacity=0;
+    prota.style.opacity=0;
+    malo.style.opacity=0;
+    moneda.style.opacity=0;
+    for (let i = 0; i < obstaculo.length; i++) {
+        obstaculo[i].style.opacity=0;
+    }
+}
 function sonido() {
     var audio = document.querySelector('.sonic_fondo');
     var boton = document.querySelector('button');
@@ -535,7 +587,6 @@ function sonido() {
             audio.play(); 
         }
 }
-  
 
 // function mover(direccion) {
     
