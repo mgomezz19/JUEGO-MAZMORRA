@@ -3,20 +3,25 @@
     var posx_profe=0;
     var posy_profe=0;
     var mover_div_x = 0;
-    var mover_div_y = -350;
+    var mover_div_y = -290;
     var mover_div_malo_x = 0;
-    var mover_div_malo_y = -350;
+    var mover_div_malo_y = -300;
+    var mover_div_examen_x = 0;
+    var mover_div_examen_y = -350;
     var cargado = false;
 window.onload = function () {
-    load();
+    // load();
     var celda = document.querySelectorAll("td");
     var tabla = document.querySelector("table");
     var numprof_x;
     var numprof_y;
-    var examen;
+    var examen_x;
+    var examen_y;
     var div_malo = document.querySelector(".div_malo");
+    var div_examen = document.querySelector(".div_examen");
 
     celda[0].className="prota";
+    celda[63].className="salida";
     celda[0].textContent="X";
     celda[0].style.color="transparent"; 
 
@@ -27,25 +32,31 @@ window.onload = function () {
     } while (tabla.rows[numprof_x].cells[numprof_y].textContent!="");
     tabla.rows[numprof_x].cells[numprof_y].className="malo";
     tabla.rows[numprof_x].cells[numprof_y].textContent="P";
-    tabla.rows[numprof_x].cells[numprof_y].style.color="transparent"
+    tabla.rows[numprof_x].cells[numprof_y].style.color="transparent";
 
-    console.log(mover_div_malo_y);
-        mover_div_malo_x +=115*numprof_y;
+        mover_div_malo_x +=110*numprof_y;
         div_malo.style.left=mover_div_malo_x+"px";
       
         mover_div_malo_y +=95*numprof_x;
         div_malo.style.transform="translateZ("+mover_div_malo_y+"px)";
-          
-        console.log(mover_div_malo_y);
 
     // div_malo.style.left=celda[numprof].style.left+"px";
     // div_malo.style.top=celda[numprof].style.top+"px";
-
     do {
-        examen = parseInt(Math.random() * celda.length);
-    } while (celda[examen].textContent!="");
-    celda[examen].textContent="E";
-    // celda[examen].style.color="transparent";
+        examen_x = parseInt(Math.random() * 8);
+        examen_y = parseInt(Math.random() * 8);
+                
+    } while (tabla.rows[examen_x].cells[examen_y].textContent!="");
+    tabla.rows[examen_x].cells[examen_y].className="examen";
+    tabla.rows[examen_x].cells[examen_y].textContent="E";
+    tabla.rows[examen_x].cells[examen_y].style.color="transparent"
+
+        mover_div_examen_x +=115*examen_y;
+        div_examen.style.left=mover_div_examen_x+"px";
+      
+        mover_div_examen_y +=95*examen_x;
+        div_examen.style.transform="translateZ("+mover_div_examen_y+"px)";
+
 
     for (let i = 0; i < celda.length; i++) {
         if (celda[i].innerHTML=="") {
@@ -60,22 +71,22 @@ function moverdiv(direccion) {
 
     switch (direccion) {
         case "izq":
-            mover_div_x -=115;
+            mover_div_x -=110;
             div_prota.style.left=mover_div_x+"px";
             break;
 
         case "arr":
-            mover_div_y -=95;
+            mover_div_y -=90;
             div_prota.style.transform="translateZ("+mover_div_y+"px)";
             break;
 
         case "der":
-            mover_div_x +=115;
+            mover_div_x +=110;
             div_prota.style.left=mover_div_x+"px";
             break;
 
         case "aba":
-            mover_div_y +=95;
+            mover_div_y +=90;
             div_prota.style.transform="translateZ("+mover_div_y+"px)";
             break;
     
@@ -89,23 +100,23 @@ function moverdiv(direccion) {
     console.log(mover_div_malo_y);
     switch (direccion) {
         case "izq":
-            mover_div_malo_x -=115;
+            mover_div_malo_x -=110;
             div_malo.style.left=mover_div_malo_x+"px";
             break;
 
         case "arr":
-            mover_div_malo_y -=95;
+            mover_div_malo_y -=90;
             div_malo.style.transform="translateZ("+mover_div_malo_y+"px)";
             console.log(mover_div_malo_y);
             break;
 
         case "der":
-            mover_div_malo_x +=115;
+            mover_div_malo_x +=110;
             div_malo.style.left=mover_div_malo_x+"px";
             break;
 
         case "aba":
-            mover_div_malo_y +=95;
+            mover_div_malo_y +=90;
             div_malo.style.transform="translateZ("+mover_div_malo_y+"px)";
             break;
     
@@ -124,6 +135,11 @@ window.addEventListener("keyup", event => {
                     if (tabla.rows[i].cells[j].textContent=="X") {
                         if (tabla.rows[i].cells[j-1].textContent=="E") {//SI A LA IZQUIERDA DEL USUARIO HAY UN EXAMEN LO PILLA Y DESBLOQUEA LA SALIDA
                             salida=true;
+                            var obtener = document.createElement("audio");
+                            obtener.src="obtener.mp3";
+                            obtener.play();
+                            var div_examen = document.querySelector(".div_examen");
+                            document.body.removeChild(div_examen);
                             tabla.rows[7].cells[7].textContent="S";
                         }  
                         
@@ -194,6 +210,11 @@ window.addEventListener("keyup", event => {
                     if (tabla.rows[i].cells[j].textContent=="X") {
                         if (tabla.rows[i-1].cells[j].textContent=="E") {//SI ARRIBA DEL USUARIO HAY UN EXAMEN LO PILLA Y DESBLOQUEA LA SALIDA
                             salida=true;
+                            var obtener = document.createElement("audio");
+                            obtener.src="obtener.mp3";
+                            obtener.play();
+                            var div_examen = document.querySelector(".div_examen");
+                            document.body.removeChild(div_examen);
                             tabla.rows[7].cells[7].textContent="S";
                         }  
 
@@ -265,6 +286,11 @@ window.addEventListener("keyup", event => {
                     if (tabla.rows[i].cells[j].textContent=="X") {
                         if (tabla.rows[i].cells[j+1].textContent=="E") {//SI A LA DERECHA DEL USUARIO HAY UN EXAMEN LO PILLA Y DESBLOQUEA LA SALIDA
                             salida=true;
+                            var obtener = document.createElement("audio");
+                            obtener.src="obtener.mp3";
+                            obtener.play();
+                            var div_examen = document.querySelector(".div_examen");
+                            document.body.removeChild(div_examen);
                             tabla.rows[7].cells[7].textContent="S";
                         } 
 
@@ -339,6 +365,11 @@ window.addEventListener("keyup", event => {
                     if (tabla.rows[i].cells[j].textContent=="X") {
                         if (tabla.rows[i+1].cells[j].textContent=="E") {//SI ABAJO DEL USUARIO HAY UN EXAMEN LO PILLA Y DESBLOQUEA LA SALIDA
                             salida=true;
+                            var obtener = document.createElement("audio");
+                            obtener.src="obtener.mp3";
+                            obtener.play();
+                            var div_examen = document.querySelector(".div_examen");
+                            document.body.removeChild(div_examen);
                             tabla.rows[7].cells[7].textContent="S";
                         } 
 
@@ -407,44 +438,47 @@ window.addEventListener("keyup", event => {
     }
 
 });
-function load(){
-    conload.style.display = 'inline-block';
-    animacion(conload,[{opacity:1, opacity:0}], { duration:3500, fill:'forwards' }, function(){   
-      conload.style.display = 'none'; 
+// function load(){
+//     conload.style.display = 'inline-block';
+//     animacion(conload,[{opacity:1, opacity:0}], { duration:3500, fill:'forwards' }, function(){   
+//       conload.style.display = 'none'; 
       
-    }) 
-    setInterval(() => {
-        var tablero = document.querySelector("table");
-        var paredes = document.querySelectorAll("img");
-        for (let i = 0; i < paredes.length; i++) {
-            animacion(paredes[i],[{opacity:0, opacity:1}], { duration:3000, fill:'forwards' }, function(){   
+//     }) 
+//     setInterval(() => {
+//         var tablero = document.querySelector("table");
+//         var paredes = document.querySelectorAll("img");
+    
+//         for (let i = 0; i < paredes.length; i++) {
+//             animacion(paredes[i],[{opacity:0, opacity:1}], { duration:3000, fill:'forwards' }, function(){   
                 
                 
-            }); 
+//             }); 
             
-        }
+//         }
             
-            animacion(tablero,[{opacity:0, opacity:1}], { duration:3000, fill:'forwards' }, function(){   
+//             animacion(tablero,[{opacity:0, opacity:1}], { duration:3000, fill:'forwards' }, function(){   
             
             
-            });
+//             });
             
         
         
-    }, 3000);
-   
-  }
-  
-  function pausar() {
-    var audio = document.querySelector('audio');
-    audio.pause();
-    audio.currentTime=0;
-}
+//     }, 3000);
 
-function play() {
-  var audio = document.querySelector('audio');
-  audio.play();
-  audio.currentTime=0;
+//   }
+
+function sonido() {
+    var audio = document.querySelector('audio');
+    var boton = document.querySelector('button');
+
+        if(!audio.paused)   { 
+            boton.className="muteado";
+            audio.pause();   
+        } 
+        else { 
+            boton.className="escuchando";
+            audio.play(); 
+        }
 }
   
 

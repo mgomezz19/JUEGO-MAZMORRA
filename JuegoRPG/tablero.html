@@ -10,12 +10,12 @@
     <script src="tablero.js"></script>
 </head>
 <body>
-    <div id="conload">Cargando...</div>
-    <img class="izquierda" src="pared.jpg"  style="opacity: 0;">
-    <img class="fondo" src="pared.jpg"  style="opacity: 0;">
-    <img class="derecha" src="pared.jpg"  style="opacity: 0;">
+    <!-- <div id="conload">Cargando...</div> -->
+    <img class="izquierda" src="pared.jpg"  >
+    <img class="fondo" src="pared.jpg"  >
+    <img class="derecha" src="pared.jpg"  >
   
-<table class="abajo" border="1" cellspacing="0" cellpadding="0" style="opacity: 0;">
+<table class="abajo" border="1" cellspacing="0" cellpadding="0">
     <tr>
         <td></td>
         <td></td>
@@ -94,11 +94,14 @@
         <td></td>
         <td></td>
         <td></td>
-        <td class="salida"></td>
+        <td></td>
     </tr>
 </table>
 <div class="div_prota"></div>
 <div class="div_malo"></div>
+<div class="div_examen"></div>
+<button class="escuchando" onclick="sonido()"></button>
+<audio autoplay loop src="sonic.mp3"></audio>
     <!-- <input type="button" value="Izq" onclick="mover(this.value)">
     <input type="button" value="Arr" onclick="mover(this.value)">
     <input type="button" value="Der" onclick="mover(this.value)">
