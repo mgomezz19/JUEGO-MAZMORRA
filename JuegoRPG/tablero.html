@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet"></head>
     <link rel="stylesheet" href="estilos.css">
     <script src="helper.js"></script>
     <script src="tablero.js"></script>
@@ -103,8 +104,13 @@
 <div class="div_examen" style="opacity: 0;"></div>
 <button class="escuchando" onclick="sonido()" style="opacity: 0;"></button>
 <audio class="sonic_fondo" autoplay loop src="sonic.mp3"></audio>
-<div class="ganar"><br><br><br> ¡Ehnorabuena, joven guerrero!</div>
+<div class="ganar">
+    <br><br><br> 
+    <h2>¡Enhorabuena, joven guerrero!</h2> 
+    <h2>¡Conseguiste escapar!</h2>
+</div>
 <div class="elegir_personajes">
+    <h1>Elige tu personaje</h1>
     <img class="img_1" src="tanque.gif" onclick="elegir_personaje(1)">
     <img src="asesino.gif" onclick="elegir_personaje(2)">
     <img class="img_3" src="mago.gif" onclick="elegir_personaje(3)">
