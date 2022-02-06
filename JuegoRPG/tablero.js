@@ -295,7 +295,7 @@ window.addEventListener("keyup", event => {
                         } 
 
                         if (tabla.rows[i].cells[j+1].textContent=="S") {//SI A LA DERECHA DEL USUARIO ESTA LA SALIDA, GANA EL JUEGO
-                            alert("Has consegido escapar");
+                            ganar();
                         } 
                         
                         //MOVIMIENTO DEL USUARIO
@@ -374,7 +374,7 @@ window.addEventListener("keyup", event => {
                         } 
 
                         if (tabla.rows[i+1].cells[j].textContent=="S") {//SI ABAJO DEL USUARIO ESTA LA SALIDA, GANA EL JUEGO
-                            alert("Has consegido escapar");
+                            ganar();
                         }
 
                         //MOVIMIENTO DEL USUARIO
@@ -438,6 +438,26 @@ window.addEventListener("keyup", event => {
     }
 
 });
+
+function ganar() {
+    var audio_victoria = document.querySelector(".audio_victoria");
+    audio_victoria.play();
+    var div_ganar = document.querySelector(".ganar");
+    var izquierda = document.querySelector(".izquierda"); 
+    var derecha = document.querySelector(".derecha"); 
+    var abajo = document.querySelector(".abajo"); 
+    var prota = document.querySelector(".div_prota"); 
+    var malo = document.querySelector(".div_malo"); 
+    var moneda = document.querySelector(".div_examen"); 
+    div_ganar.style.opacity=1;
+    izquierda.style.opacity=0;
+    derecha.style.opacity=0;
+    abajo.style.opacity=0;
+    prota.style.opacity=0;
+    malo.style.opacity=0;
+    moneda.style.opacity=0;
+
+}
 // function load(){
 //     conload.style.display = 'inline-block';
 //     animacion(conload,[{opacity:1, opacity:0}], { duration:3500, fill:'forwards' }, function(){   
