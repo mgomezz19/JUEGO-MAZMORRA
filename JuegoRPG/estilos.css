@@ -116,6 +116,14 @@ body{
     z-index: 305;
     opacity: 0;
 }
+
+.puerta{
+    width: 150px;
+    position: absolute;
+    margin-left: 93%;
+    margin-top: 10%;
+    transform: rotateY(-80deg)translateZ(390px)translateX(280px);
+}
 .izquierda{
     
     position: absolute;
@@ -161,7 +169,6 @@ body{
 }
 
 .salida{
-    background-image: url("puerta-abierta.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;

@@ -501,6 +501,7 @@ function elegir_personaje(clase) {
     var malo = document.querySelector(".div_malo"); 
     var moneda = document.querySelector(".div_examen"); 
     var boton = document.querySelector('button');
+    var puerta = document.querySelector('.puerta');
     izquierda.style.opacity=1;
     derecha.style.opacity=1;
     abajo.style.opacity=1;
@@ -508,6 +509,7 @@ function elegir_personaje(clase) {
     malo.style.opacity=1;
     moneda.style.opacity=1; 
     boton.style.opacity=1;
+    puerta.style.opacity=1;
     switch (clase) {
         case 1:
             personaje.className="div_tanque";
@@ -540,12 +542,14 @@ function ganar() {
     var prota = document.querySelector("#prota"); 
     var malo = document.querySelector(".div_malo"); 
     var obstaculo = document.querySelectorAll(".div_obstaculo"); 
+    var puerta = document.querySelector('.puerta');
     div_ganar.style.opacity=1;
     izquierda.style.opacity=0;
     derecha.style.opacity=0;
     abajo.style.opacity=0;
     prota.style.opacity=0;
     malo.style.opacity=0;
+    puerta.style.opacity=0;
     for (let i = 0; i < obstaculo.length; i++) {
         obstaculo[i].style.opacity=0;
     }
@@ -563,6 +567,7 @@ function perder() {
     var malo = document.querySelector(".div_malo"); 
     var moneda = document.querySelector(".div_examen"); 
     var obstaculo = document.querySelectorAll(".div_obstaculo"); 
+    var puerta = document.querySelector('.puerta');
     div_perder.style.opacity=1;
     izquierda.style.opacity=0;
     derecha.style.opacity=0;
@@ -570,6 +575,7 @@ function perder() {
     prota.style.opacity=0;
     malo.style.opacity=0;
     moneda.style.opacity=0;
+    puerta.style.opacity=0;
     for (let i = 0; i < obstaculo.length; i++) {
         obstaculo[i].style.opacity=0;
     }
